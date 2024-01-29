@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import home_feed_view
+from .views import home_view
 
 urlpatterns = [
-    path('', test, name='home_feed'),
+    path('', home_view, name='home'),
 ]

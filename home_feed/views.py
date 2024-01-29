@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import BlogPost
 
-def home_feed_view(request):
-    return HttpResponse("Testing ItGirl Blog")
+def home_view(request):
+    blog_posts = BlogPost.objects.all()
+
+    return render(request, 'home_feed/home_feed.html', {'blog_posts': blog_posts})
+
