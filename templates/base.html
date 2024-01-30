@@ -19,19 +19,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home Feed</a>
+                        <a href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Skincare</a>
+                        <a class="nav-link" href="{% url 'category_posts' category='Skin' %}">Skincare</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Hair Care</a>
+                        <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Sexual Wellness</a>
+                        <a class="nav-link" href="{% url 'category_posts' category='Sexual Wellness' %}">Sexual Wellness</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Menstrual Wellness</a>
+                        <a class="nav-link" href="{% url 'category_posts'  category='Menstrual Wellness' %}">Menstrual Wellness</a>
                     </li>
 
                 </ul>

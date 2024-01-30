@@ -10,3 +10,7 @@ def blog_post_detail_view(request, slug):
     blog_post = get_object_or_404(BlogPost, slug=slug, status='published')
 
     return render(request, 'home_feed/blog_post_detail.html', {'blog_post': blog_post})
+
+def category_view(request, category):
+    blog_posts = BlogPost.objects.filter(category=category, status='published')
+    return render(request, 'home_feed/category_posts.html', {'blog_posts': blog_posts, 'category': category})
