@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>ItGirl</title>
+    {% load static %}
 </head>
 
 <body>
@@ -13,7 +14,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">ItGirl</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,14 +30,22 @@
                         <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'category_posts' category='Sexual Wellness' %}">Sexual Wellness</a>
+                        <a class="nav-link" href="{% url 'category_posts' category='Sexual Wellness' %}">Sexual
+                            Wellness</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'category_posts'  category='Menstrual Wellness' %}">Menstrual Wellness</a>
+                        <a class="nav-link" href="{% url 'category_posts'  category='Menstrual Wellness' %}">Menstrual
+                            Wellness</a>
                     </li>
 
                 </ul>
             </div>
+            {% if user.is_authenticated %}
+            <a href="{% url 'account_logout' %}">Logout</a>
+            {% else %}
+            <a href="{% url 'account_login' %}">Login</a>
+            <a href="{% url 'account_signup' %}">Sign Up</a>
+            {% endif %}
         </div>
     </nav>
 
@@ -43,10 +53,16 @@
         {% block content %}{% endblock %}
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-Pfz7JS1KL51NWW3BWT+AtDs+Xv2fzmFlulqWL9xAsj7hjWl/1EdbBdFx/t1dPwk" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy5qE0HhpEC35eF6b3sVJg5+gWPI8b5U6M" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-Pfz7JS1KL51NWW3BWT+AtDs+Xv2fzmFlulqWL9xAsj7hjWl/1EdbBdFx/t1dPwk" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy5qE0HhpEC35eF6b3sVJg5+gWPI8b5U6M" crossorigin="anonymous">
+    </script>
+
 
 </body>
 
