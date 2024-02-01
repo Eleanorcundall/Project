@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/<slug>/', blog_post_detail_view, name='blog_post_detail'),
     path('category/<str:category>/', category_view, name='category_view'),
+    path('accounts/', include('allauth.urls')),
 ]
