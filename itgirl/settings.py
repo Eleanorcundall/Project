@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-eleanorcundall-project4-xvccfzxft01.ws-eu107.gitpod.io', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-eleanorcundall-project4-xvccfzxft01.ws-eu108.gitpod.io', '.herokuapp.com']
 
 
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.apple',
     'cloudinary',
     'home_feed',
+    'user_submissions',
 ]
 
 SITE_ID = 1
@@ -132,6 +133,13 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'itgirlblogsite@gmail.com'
+# EMAIL_HOST_PASSWORD = 'wnjkkjervhifizhe'
+
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Internationalization
@@ -149,7 +157,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
