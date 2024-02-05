@@ -27,6 +27,7 @@ class BlogPost(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     slug = AutoSlugField(populate_from='title', unique=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')
+    
 
     def __str__(self):
         return self.title

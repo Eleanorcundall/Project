@@ -5,7 +5,23 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ blog_post.title }}</h1>
-    <img src="{{ blog_post.featured_image.url }}" alt="{{ blog_post.title }}">
-    <p>{{ blog_post.content }}</p>
+    <h1>{{ post.title }}</h1>
+    <p>Published on: {{ post.created_at }}</p>
+    <p>Category: {{ post.category }}</p>
+
+    {% if post.content %}
+        <div>
+            {{ post.content }}
+        </div>
+    {% endif %}
+
+    {% if post.submission_content %}
+        <div>
+            {{ post.submission_content }}
+        </div>
+    {% endif %}
+
+    {% if post.featured_image %}
+        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+    {% endif %}
 {% endblock %}

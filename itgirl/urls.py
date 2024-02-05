@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from home_feed.views import blog_post_detail_view, category_view
+from home_feed.views import home_view, blog_post_detail_view, category_view
+from user_submissions.views import submit_post
 
 urlpatterns = [
     path('', include('home_feed.urls')),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('post/<slug>/', blog_post_detail_view, name='blog_post_detail'),
     path('category/<str:category>/', category_view, name='category_view'),
     path('accounts/', include('allauth.urls')),
+    path('user_submissions/', include('user_submissions.urls', namespace='user_submissions')),
 ]

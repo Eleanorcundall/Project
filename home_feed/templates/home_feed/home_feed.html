@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Welcome to the Home Page</h1>
-    {% for post in blog_posts %}
+    {% for post in all_posts %}
         <h2><a href="{% url 'blog_post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
         <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
         <p>{{ post.content }}</p>
