@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ category }} Posts - ItGirl % endblock %}
+{% block title %}{{ category }} Posts - ItGirl {% endblock %}
 {% block content %}
   <h1>{{ category }} Posts</h1>
 
-  {% for post in blog_posts %}
+  {% for post in all_posts %}
     <div class="blog-post">
-      <h2>{{ post.title }}</h2>
+      <h2><a href="{% url 'blog_post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
       <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
       <p>{{ post.content }}</p>
       <p>Category: {{ post.category }}</p>

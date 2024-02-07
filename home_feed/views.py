@@ -31,4 +31,10 @@ def blog_post_detail_view(request, slug):
 
 def category_view(request, category):
     blog_posts = BlogPost.objects.filter(category=category, status='published')
-    return render(request, 'home_feed/category_posts.html', {'blog_posts': blog_posts, 'category': category})
+
+    user_submissions = UserSubmission.objects.filter(status='published')
+
+    all_posts = list(blog_posts) + list(user_submissions)
+
+    all_posts.sort(key=lambda x: x.created_at, reverse=True)
+    return render(request, 'home_feed/category_posts.html', {'all_posts': all_posts, 'category': category})
