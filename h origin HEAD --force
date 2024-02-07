@@ -1,0 +1,83 @@
+[33mcommit 8e5274987565f87badde4e240c7ae7e5005460b4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Feb 5 19:48:24 2024 +0000
+
+    Create view, form, urls, submit_post.html and amend base.html for users to access the create post functionality IF logged in, amend home_feed.html so user submissions can be clicked on and viewed, add missing imports and amend debug.
+
+[33mcommit 3b9c0124b2fa7c8b0575e580ff2026977bb04657[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Feb 5 18:08:55 2024 +0000
+
+    Create user_submissions app with a model for users to submit blog posts, register in admin.py, migrate/makemigrations and amend settings.py installed apps to include user_submissions app
+
+[33mcommit c27294c729a7ff2bbc9ce69a9c863ed51b245128[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Thu Feb 1 16:39:51 2024 +0000
+
+    Amend setting.py file and add STATIC_ROOT variable to allow collection of all static files, add is_authenticated check to base.html for login/logout/signup
+
+[33mcommit 2d8061b9d12ce89522ae28e032423e3ac8f26ad0[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Thu Feb 1 16:16:10 2024 +0000
+
+    Set up Django Allauth for user authentication. Add templates for signup, login,log out, and password and add urls. Test and confirm user sign ups work and are stored in the database. Ready for further enhancements.
+
+[33mcommit 93f3ddb845af3feaea6f51126ea8a7fdf010c1db[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Tue Jan 30 20:55:35 2024 +0000
+
+    Install Faker and set up seed data for development
+
+[33mcommit a22f54d48bc3f0ebcafa8ea5abedfdbdaa6ac3e3[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Tue Jan 30 20:15:24 2024 +0000
+
+    Create template, urls, view and update base.html to ensure users are able to select a category of blog posts to view from the nav bar
+
+[33mcommit 97837949c80f8e392e9f76ab5e81cf4025ce6bd5[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Jan 29 18:09:47 2024 +0000
+
+    Created blog_post_detail, amend home_feed, urls, views & home_feed.html, add urls to itgirl and amend base_html to display post detail to enable users to be able to view one blog post at a time
+
+[33mcommit 2d38d1e637d2dbcd83e7c60fdbdf3f2304cf78f6[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Jan 29 18:01:13 2024 +0000
+
+    Set up First view/template/urls to ensure main stucture is working
+
+[33mcommit bc0494aa8da47f096553128e6087ced07d9e1625[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Jan 29 16:34:37 2024 +0000
+
+    Install cloudinary and Django autoSlug, Create first main blog post model and make migrations
+
+[33mcommit 859700a27c4e5d765c885f3973f2ed213f35e522[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Jan 29 11:44:55 2024 +0000
+
+    Add secret key variable and amend settings.py for new secret key
+
+[33mcommit 14febf1c867548e4c190cb7552bc033fa9adba90[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Jan 29 11:15:20 2024 +0000
+
+    Amend allowed hosts, create procfile and update requirements.txt file ready for deployment
+
+[33mcommit ff2dc56490c095c45549a22a6d8664da496033f3[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Mon Jan 29 11:08:48 2024 +0000
+
+    Set up postgres database and create superuser
+
+[33mcommit d7680f623477887fbd17e833caec5f8af6c3a061[m
+Author: Eleanorcundall Cundall <eleanorcundall@hotmail.com>
+Date:   Fri Jan 26 14:31:42 2024 +0000
+
+    Set up main project and home feed app with test HTTP response
+
+[33mcommit fa4ae7e93d144c28be643217c855c5f77fc668c1[m
+Author: Eleanorcundall <132675997+Eleanorcundall@users.noreply.github.com>
+Date:   Thu Jan 25 19:27:16 2024 +0000
+
+    Initial commit
