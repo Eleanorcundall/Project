@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'content_feeds',
     'user_submissions',
+    'user_profiles',
 ]
 
 SITE_ID = 1
@@ -138,7 +139,7 @@ AUTHENTICATION_BACKENDS = [
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'itgirlblogsite@gmail.com'
-# EMAIL_HOST_PASSWORD = 'wnjkkjervhifizhe'
+# EMAIL_HOST_PASSWORD = '*'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
