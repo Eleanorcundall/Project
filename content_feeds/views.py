@@ -13,7 +13,7 @@ def home_view(request):
     all_posts.sort(key=lambda x: x.created_at, reverse=True)
 
     
-    return render(request, 'home_feed/home_feed.html', {'all_posts': all_posts})
+    return render(request, 'content_feeds/home_feed.html', {'all_posts': all_posts})
 
 
 def blog_post_detail_view(request, slug):
@@ -22,9 +22,9 @@ def blog_post_detail_view(request, slug):
     user_submission = UserSubmission.objects.filter(slug=slug, status='published').first()
 
     if blog_post:
-        return render(request, 'home_feed/blog_post_detail.html', {'post': blog_post})
+        return render(request, 'content_feeds/blog_post_detail.html', {'post': blog_post})
     elif user_submission:
-        return render(request, 'home_feed/blog_post_detail.html', {'post': user_submission})
+        return render(request, 'content_feeds/blog_post_detail.html', {'post': user_submission})
     else:
         raise Http404("Post not found")
 
@@ -32,9 +32,9 @@ def blog_post_detail_view(request, slug):
 def category_view(request, category):
     blog_posts = BlogPost.objects.filter(category=category, status='published')
 
-    user_submissions = UserSubmission.objects.filter(status='published')
+    user_submissions = UserSubmission.objects.filter(category=category, status='published')
 
     all_posts = list(blog_posts) + list(user_submissions)
 
     all_posts.sort(key=lambda x: x.created_at, reverse=True)
-    return render(request, 'home_feed/category_posts.html', {'all_posts': all_posts, 'category': category})
+    return render(request, 'content_feeds/category_posts.html', {'all_posts': all_posts, 'category': category})

@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.apple',
     'cloudinary',
-    'home_feed',
+    'content_feeds',
     'user_submissions',
 ]
 

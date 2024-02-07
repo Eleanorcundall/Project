@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from home_feed.views import home_view, blog_post_detail_view, category_view
+from content_feeds.views import home_view, blog_post_detail_view, category_view
 from user_submissions.views import submit_post
 
 urlpatterns = [
-    path('', include('home_feed.urls')),
+    path('', include('content_feeds.urls')),
     path('admin/', admin.site.urls),
     path('post/<slug>/', blog_post_detail_view, name='blog_post_detail'),
     path('category/<str:category>/', category_view, name='category_view'),
