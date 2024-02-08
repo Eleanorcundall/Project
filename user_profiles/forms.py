@@ -5,4 +5,4 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['bio', 'favorite_products', 'profile_picture']
-        exclude = ['likes_received', 'likes_given']
+        exclude = ['user, likes_received', 'likes_given']

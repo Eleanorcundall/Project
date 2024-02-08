@@ -12,4 +12,4 @@ class UserProfile(models.Model):
     likes_given = models.ManyToManyField(Like, related_name='liked_by', blank=True)
 
     def __str__(self):
-        return self.user
+        return self.user.username
