@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from content_feeds.views import home_view, blog_post_detail_view, category_view
 from user_submissions.views import submit_post
+from user_profiles.views import submit_user_profile_form
 
 urlpatterns = [
     path('', include('content_feeds.urls')),
@@ -26,4 +27,6 @@ urlpatterns = [
     path('category/<str:category>/', category_view, name='category_view'),
     path('accounts/', include('allauth.urls')),
     path('user_submissions/', include('user_submissions.urls', namespace='user_submissions')),
+    path('user_profiles/', include(('user_profiles.urls', 'user_profiles'), namespace='user_profiles'))
+
 ]
