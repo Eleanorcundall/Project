@@ -18,4 +18,14 @@ def submit_user_profile_form(request):
     else:
         form = UserProfileForm(instance=user_profile)
 
-    return render(request, 'user_profiles/user_profile_edit.html', {'form': form})
+    return render(request, 'user_profile/user_profile_edit.html', {'form': form})
+
+
+def user_profile_view(request):
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        user_profile = None
+
+    print(user_profile)
+    return render(request, 'user_profile/user_profile.html', {'user_profile': user_profile})
