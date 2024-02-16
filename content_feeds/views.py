@@ -45,10 +45,21 @@ def like_post(request, post_id):
     post = get_object_or_404(UserSubmission, id=post_id)
     user = request.user
 
-    if Like.objects.filter(user=user, content_type__model='usersubmission', object_id=post_id).exists():
-        return JsonResponse({'error': 'You have already liked this post'}, status=400)
+    if request.method == 'POST':
+        form = LikePostForm(request.POST)
+        if form.is_valid():
+
+            if Like.objects.filter(user=user, content_type__model='usersubmission', object_id=post_id).exists():
+                return JsonResponse({'error': 'You have already liked this post'}, status=400)
+            else:
+                like = form.save(commit=False)
+                like.user = user
+                like.content_type = ContentType.objects.get_for_model(post)
+                like.object_id = post.id
+                like.save()
+                print("Post liked!")
+                return JsonResponse({'success': 'Post liked successfully'})
     else:
-        like = Like(user=user, content_type=post.get_content_type(), object_id=post_id)
-        like.save()
-        print("post liked!")
-        return JsonResponse({'success': 'Post liked successfully'})
+        form = LikePostForm()
+
+    return render(request, 'blog_post_detail.html', {'form': form})
