@@ -24,4 +24,8 @@
     {% if post.featured_image %}
         <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
     {% endif %}
+    <form action="{% url 'like_post' post_id=post.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Like</button>
+    </form>
 {% endblock %}

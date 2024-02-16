@@ -1,5 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
+from django.http import JsonResponse
 from .models import BlogPost, Like
+from .forms import LikePostForm
 from user_submissions.models import UserSubmission
 
 
@@ -58,7 +63,8 @@ def like_post(request, post_id):
                 like.object_id = post.id
                 like.save()
                 print("Post liked!")
-                return JsonResponse({'success': 'Post liked successfully'})
+                return redirect('blog_post_detail', slug=post.slug)
+
     else:
         form = LikePostForm()
 
