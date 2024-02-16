@@ -3,16 +3,18 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
-from .models import BlogPost, Like
+from .models import AdPost, Like
 from .forms import LikePostForm
 from user_submissions.models import UserSubmission
 
 
 def home_view(request): 
-    blog_posts = BlogPost.objects.filter(status='published')
+    ad_posts = AdPost.objects.filter(status='published')
+    print("Hello!")
+    print(ad_posts)
     user_submissions = UserSubmission.objects.filter(status='published')
     
-    all_posts = list(blog_posts) + list(user_submissions)
+    all_posts = list(ad_posts) + list(user_submissions)
 
     
     all_posts.sort(key=lambda x: x.created_at, reverse=True)
@@ -22,12 +24,12 @@ def home_view(request):
 
 
 def blog_post_detail_view(request, slug):
-    blog_post = BlogPost.objects.filter(slug=slug, status='published').first()
+    ad_posts = AdPost.objects.filter(slug=slug, status='published').first()
 
     user_submission = UserSubmission.objects.filter(slug=slug, status='published').first()
 
-    if blog_post:
-        return render(request, 'content_feeds/blog_post_detail.html', {'post': blog_post})
+    if ad_posts:
+        return render(request, 'content_feeds/blog_post_detail.html', {'post': ad_posts})
     elif user_submission:
         return render(request, 'content_feeds/blog_post_detail.html', {'post': user_submission})
     else:
@@ -35,11 +37,11 @@ def blog_post_detail_view(request, slug):
 
 
 def category_view(request, category):
-    blog_posts = BlogPost.objects.filter(category=category, status='published')
+    ad_posts = AdPost.objects.filter(category=category, status='published')
 
     user_submissions = UserSubmission.objects.filter(category=category, status='published')
 
-    all_posts = list(blog_posts) + list(user_submissions)
+    all_posts = list(ad_posts) + list(user_submissions)
 
     all_posts.sort(key=lambda x: x.created_at, reverse=True)
     return render(request, 'content_feeds/category_posts.html', {'all_posts': all_posts, 'category': category})

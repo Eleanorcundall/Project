@@ -6,7 +6,7 @@ from autoslug import AutoSlugField
 from cloudinary.models import CloudinaryField
 
 
-class BlogPost(models.Model):
+class AdPost(models.Model):
     CATEGORY_CHOICES = [
         ('Hair', 'Hair'),
         ('Skin', 'Skin'),
@@ -24,7 +24,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ad_posts')
     created_at = models.DateTimeField(auto_now_add=True)
     featured_image = CloudinaryField('image', default='placeholder')
     slug = AutoSlugField(populate_from='title', unique=True)
