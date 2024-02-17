@@ -29,12 +29,18 @@ def blog_post_detail_view(request, slug):
     user_submission = UserSubmission.objects.filter(slug=slug, status='published').first()
 
     if ad_posts:
-        return render(request, 'content_feeds/blog_post_detail.html', {'post': ad_posts})
+        post = ad_posts
+        post_type = 'ad_post'
     elif user_submission:
-        return render(request, 'content_feeds/blog_post_detail.html', {'post': user_submission})
+        post = user_submission
+        post_type = 'user_submission'
+
     else:
         raise Http404("Post not found")
 
+    return render(request, 'content_feeds/blog_post_detail.html', {'post': post, 'post_type': post_type})
+
+    
 
 def category_view(request, category):
     ad_posts = AdPost.objects.filter(category=category, status='published')
