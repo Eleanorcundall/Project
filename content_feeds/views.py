@@ -34,13 +34,16 @@ def blog_post_detail_view(request, slug):
     elif user_submission:
         post = user_submission
         post_type = 'user_submission'
+        author = user_submission.user
+        author_id = author.id
+        author_username = author.username
 
     else:
         raise Http404("Post not found")
 
-    return render(request, 'content_feeds/blog_post_detail.html', {'post': post, 'post_type': post_type})
+    return render(request, 'content_feeds/blog_post_detail.html', {'post': post, 'post_type': post_type,'author_id': author_id, 'author_username': author_username})
 
-    
+
 
 def category_view(request, category):
     ad_posts = AdPost.objects.filter(category=category, status='published')
@@ -69,6 +72,7 @@ def like_post(request, post_id):
                 like.user = user
                 like.content_type = ContentType.objects.get_for_model(post)
                 like.object_id = post.id
+                like.object_owner_id = post.user_id
                 like.save()
                 print("Post liked!")
                 return redirect('blog_post_detail', slug=post.slug)

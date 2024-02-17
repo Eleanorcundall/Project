@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from content_feeds.views import home_view, blog_post_detail_view, category_view
 from user_submissions.views import submit_post
-from user_profile.views import submit_user_profile_form, user_profile_view
+from user_profile.views import submit_user_profile_form, user_profile_view, other_user_profile_view
 
 urlpatterns = [
     path('', include('content_feeds.urls')),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('user_submissions/', include('user_submissions.urls', namespace='user_submissions')),
     path('', include(('user_profile.urls', 'user_profile'), namespace='edit_profile')),
-    path('', include(('user_profile.urls', 'user_profile'), namespace='user_profile'))
+    path('', include(('user_profile.urls', 'user_profile'), namespace='user_profile')),
+    path('', include(('user_profile.urls', 'user_profile'), namespace='other_user_profile'))
 ]
