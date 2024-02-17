@@ -18,6 +18,9 @@
                     <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
                     
                     <p><strong>Favorite Products:</strong> {{ user_profile.favorite_products }}</p>
+
+                    <p><strong>Likes Given:</strong> {{ likes_given_count }}</p>
+                    <p><strong>Likes Received: </strong>{{ likes_received_count }}</p>
                     
                     <a href="{% url 'edit_profile:edit_profile'  %}" class="btn btn-primary">Edit Profile</a>
                 </div>
