@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
 from .models import AdPost, Like
-from .forms import LikePostForm
+from .forms import LikePostForm, CommentForm
 from user_submissions.models import UserSubmission
 
 
@@ -24,12 +24,12 @@ def home_view(request):
 
 
 def blog_post_detail_view(request, slug):
-    ad_posts = AdPost.objects.filter(slug=slug, status='published').first()
+    ad_post = AdPost.objects.filter(slug=slug, status='published').first()
 
     user_submission = UserSubmission.objects.filter(slug=slug, status='published').first()
 
-    if ad_posts:
-        post = ad_posts
+    if ad_post:
+        post = ad_post
         post_type = 'ad_post'
     elif user_submission:
         post = user_submission
@@ -37,7 +37,6 @@ def blog_post_detail_view(request, slug):
         author = user_submission.user
         author_id = author.id
         author_username = author.username
-
     else:
         raise Http404("Post not found")
 
@@ -81,3 +80,24 @@ def like_post(request, post_id):
         form = LikePostForm()
 
     return render(request, 'blog_post_detail.html', {'form': form})
+
+
+@login_required
+def comment_on_post(request, post_id):
+    print("Called comment_on_post!")
+    
+    post = get_object_or_404(UserSubmission, id=post_id)
+    print("View accessed:", request.method)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            print("Form is valid!")
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+            return redirect('blog_post_detail', slug=post.slug)
+        print("Oops, something went wrong.")
+
+    print(form)
+    return render(request, 'blog_post_detail.html', {'post': post})
