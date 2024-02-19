@@ -24,12 +24,8 @@ def submit_user_profile_form(request):
 
 
 def user_profile_view(request):
-    try:
-        user_profile = UserProfile.objects.get(user=request.user)
-    except UserProfile.DoesNotExist:
-        user_profile = None
-    
     current_user = request.user
+    user_profile, created = UserProfile.objects.get_or_create(user=current_user)
 
     print(current_user)
 
@@ -42,7 +38,8 @@ def user_profile_view(request):
 
 def other_user_profile_view(request, user_id):
     user = get_object_or_404(User, id=user_id)
-    user_profile = get_object_or_404(UserProfile, user=user)
+    user_profile, created = UserProfile.objects.get_or_create(user=user)
+
 
 
     likes_given_count = Like.objects.filter(user=user).count()
