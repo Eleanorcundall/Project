@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from autoslug import AutoSlugField 
 from cloudinary.models import CloudinaryField
+from user_submissions.models import UserSubmission
 
 
 class AdPost(models.Model):
@@ -50,3 +51,12 @@ class Like(models.Model):
 
         def __str__(self):
             return f"{self.user} likes {self.post}"
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(max_length=400)
+    created_at = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(UserSubmission, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.user_submission.title}"
