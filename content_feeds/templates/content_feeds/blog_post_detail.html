@@ -32,6 +32,10 @@
         {% csrf_token %}
         <button type="submit">Like</button>
     </form>
+    <h3>Comments</h3>
+    {% for comment in comments %}
+    <p>{{ comment.content }}</p>
+{% endfor %}
 
     <h2>Submit a Comment</h2>
     <form action="{% url 'comment_on_post' post_id=post.id %}" method="post">

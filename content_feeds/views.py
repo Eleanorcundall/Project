@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
-from .models import AdPost, Like
+from .models import AdPost, Like, Comment
 from .forms import LikePostForm, CommentForm
 from user_submissions.models import UserSubmission
 
@@ -37,10 +37,13 @@ def blog_post_detail_view(request, slug):
         author = user_submission.user
         author_id = author.id
         author_username = author.username
+        comment = Comment.objects.filter(post=user_submission)
     else:
         raise Http404("Post not found")
+    
+    comments = Comment.objects.filter(post=post)
 
-    return render(request, 'content_feeds/blog_post_detail.html', {'post': post, 'post_type': post_type,'author_id': author_id, 'author_username': author_username})
+    return render(request, 'content_feeds/blog_post_detail.html', {'post': post, 'post_type': post_type,'author_id': author_id, 'author_username': author_username, 'comments': comments})
 
 
 
@@ -84,20 +87,15 @@ def like_post(request, post_id):
 
 @login_required
 def comment_on_post(request, post_id):
-    print("Called comment_on_post!")
-    
     post = get_object_or_404(UserSubmission, id=post_id)
-    print("View accessed:", request.method)
+    
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
-            print("Form is valid!")
             comment = comment_form.save(commit=False)
             comment.user = request.user
             comment.post = post
             comment.save()
             return redirect('blog_post_detail', slug=post.slug)
-        print("Oops, something went wrong.")
-
-    print(form)
+   
     return render(request, 'blog_post_detail.html', {'post': post})
