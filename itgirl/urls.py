@@ -27,7 +27,6 @@ urlpatterns = [
     path('category/<str:category>/', category_view, name='category_view'),
     path('accounts/', include('allauth.urls')),
     path('user_submissions/', include('user_submissions.urls', namespace='user_submissions')),
-    path('', include(('user_profile.urls', 'user_profile'), namespace='edit_profile')),
     path('', include(('user_profile.urls', 'user_profile'), namespace='user_profile')),
-    path('', include(('user_profile.urls', 'user_profile'), namespace='other_user_profile'))
+    path('content_feeds/', include('content_feeds.urls'))
 ]

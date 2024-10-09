@@ -35,7 +35,8 @@
     <h3>Comments</h3>
     {% for comment in comments %}
     <p>{{ comment.content }}</p>
-{% endfor %}
+    <a href="{% url 'edit_comment' comment.id %}" class="btn btn-primary">Edit Comment</a>
+    {% endfor %}
 
     <h2>Submit a Comment</h2>
     <form action="{% url 'comment_on_post' post_id=post.id %}" method="post">
