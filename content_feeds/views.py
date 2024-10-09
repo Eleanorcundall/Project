@@ -99,3 +99,16 @@ def comment_on_post(request, post_id):
             return redirect('blog_post_detail', slug=post.slug)
    
     return render(request, 'blog_post_detail.html', {'post': post})
+
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('blog_post_detail', slug=comment.post.slug)
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'content_feeds/edit_comment.html', {'form': form, 'comment': comment})
