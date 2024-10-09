@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home_view, blog_post_detail_view, category_view, like_post, comment_on_post
+from .views import home_view, blog_post_detail_view, category_view, like_post, comment_on_post, edit_comment
 
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path('category/<str:category>/', category_view, name='category_posts'),
     path('like/<int:post_id>/', like_post, name='like_post'),
     path('comment/<int:post_id>/', comment_on_post, name='comment_on_post'),
+    path('edit-comment/<int:comment_id>/', edit_comment, name='edit_comment')
 ]
