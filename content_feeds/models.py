@@ -59,4 +59,4 @@ class Comment(models.Model):
     post = models.ForeignKey(UserSubmission, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Comment by {self.user.username} on {self.user_submission.title}"
+        return f"Comment by {self.user.username} on {self.post.title}"
