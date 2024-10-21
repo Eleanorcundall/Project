@@ -25,24 +25,24 @@
         <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
     {% endif %}
     {% if post_type == 'user_submission' %}
-    <p>Author: <a href="{% url 'user_profile:other_user_profile' author_id %}">{{ author_username }}</a></p>
-
-
-    <form action="{% url 'like_post' post_id=post.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Like</button>
-    </form>
-    <h3>Comments</h3>
-    {% for comment in comments %}
-    <p>{{ comment.content }}</p>
-    <a href="{% url 'edit_comment' comment.id %}" class="btn btn-primary">Edit Comment</a>
-    {% endfor %}
-
-    <h2>Submit a Comment</h2>
-    <form action="{% url 'comment_on_post' post_id=post.id %}" method="post">
-        {% csrf_token %}
-        <input type="test" value="" name="content">
-        <button type="submit">Comment</button>
-    </form>
+        <p>Author: <a href="{% url 'user_profile:other_user_profile' author_id %}">{{ author_username }}</a></p>
+        <form action="{% url 'like_post' post_id=post.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Like</button>
+        </form>
+        {% if post.user == request.user %}
+            <a href="{% url 'delete_post' slug=post.slug %}">Delete Post</a>
+        {% endif %}
+        <h3>Comments</h3>
+        {% for comment in comments %}
+            <p>{{ comment.content }}</p>
+                <a href="{% url 'edit_comment' comment.id %}" class="btn btn-primary">Edit Comment</a>
+        {% endfor %}
+        <h2>Submit a Comment</h2>
+        <form action="{% url 'comment_on_post' post_id=post.id %}" method="post">
+            {% csrf_token %}
+            <input type="test" value="" name="content">
+            <button type="submit">Comment</button>
+        </form>
     {% endif %}
 {% endblock %}
