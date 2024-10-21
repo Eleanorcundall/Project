@@ -40,11 +40,13 @@
                     <a href="{% url 'edit_comment' comment.id %}" class="btn btn-primary">Edit Comment</a>
                 {% endif %}
         {% endfor %}
-        <h2>Submit a Comment</h2>
-        <form action="{% url 'comment_on_post' post_id=post.id %}" method="post">
-            {% csrf_token %}
-            <input type="test" value="" name="content">
-            <button type="submit">Comment</button>
-        </form>
+        {% if user.is_authenticated %}
+            <h2>Submit a Comment</h2>
+            <form action="{% url 'comment_on_post' post_id=post.id %}" method="post">
+                {% csrf_token %}
+                <input type="test" value="" name="content">
+                <button type="submit">Comment</button>
+            </form>
+        {% endif %}
     {% endif %}
 {% endblock %}
