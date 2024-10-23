@@ -100,6 +100,7 @@ def comment_on_post(request, post_id):
    
     return render(request, 'blog_post_detail.html', {'post': post})
 
+@login_required
 def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id, user=request.user)
 
