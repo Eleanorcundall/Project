@@ -31,7 +31,8 @@
             <button type="submit">Like</button>
         </form>
         {% if post.user == request.user %}
-            <a href="{% url 'delete_post' slug=post.slug %}">Delete Post</a>
+            <a href="{% url 'delete_post' slug=post.slug %}" class="btn btn-primary">Delete Post</a>
+            <a href="{% url 'edit_post' slug=post.slug %}" class="btn btn-primary">Edit Post</a>
         {% endif %}
         <h3>Comments</h3>
         {% for comment in comments %}
