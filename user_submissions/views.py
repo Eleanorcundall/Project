@@ -6,19 +6,27 @@ from .models import UserSubmission
 from .forms import UserSubmissionForm
 
 @login_required
-def submit_post(request):
-    print(request.method)
+def submit_post(request, slug=None):
+    if slug:
+        post = get_object_or_404(UserSubmission, slug=slug)
+        if post.user != request.user:
+            messages.error(request, "You are not authorized to edit this post.")
+            return redirect('blog_post_detail', slug=slug)
+    else:
+        post = None
+    
     if request.method == 'POST':
-        user_submission_form = UserSubmissionForm(request.POST, request.FILES)
+        user_submission_form = UserSubmissionForm(request.POST, request.FILES, instance=post)
         if user_submission_form.is_valid():
             user_submission = user_submission_form.save(commit=False)
-            user_submission.user = request.user 
+            user_submission.user = request.user
             user_submission.save()
             return redirect('home')
     else:
-        user_submission_form = UserSubmissionForm()
+        user_submission_form = UserSubmissionForm(instance=post)
 
     return render(request, 'user_submissions/submit_post.html', {'user_submission_form': user_submission_form})
+
 
 @login_required
 def delete_post(request, slug):
