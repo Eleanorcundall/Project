@@ -39,6 +39,7 @@
             <p>{{ comment.content }}</p>
                 {% if comment.user == request.user %}
                     <a href="{% url 'edit_comment' comment.id %}" class="btn btn-primary">Edit Comment</a>
+                    <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger">Delete Comment</a>
                 {% endif %}
         {% endfor %}
         {% if user.is_authenticated %}
