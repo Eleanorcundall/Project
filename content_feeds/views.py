@@ -113,3 +113,16 @@ def edit_comment(request, comment_id):
         form = CommentForm(instance=comment)
 
     return render(request, 'content_feeds/edit_comment.html', {'form': form, 'comment': comment})
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if comment.user != request.user:
+        return redirect('blog_post_detail', slug=comment.post.slug)
+
+    if request.method == "POST":
+        comment.delete()
+        return redirect('blog_post_detail', slug=comment.post.slug)
+
+    return render(request, 'content_feeds/delete_comment_confirm.html', {'comment': comment})
