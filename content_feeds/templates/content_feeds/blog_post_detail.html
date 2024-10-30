@@ -43,7 +43,7 @@
                 {% endif %}
         {% endfor %}
         {% if user.is_authenticated %}
-            <h2>Submit a Comment</h2>
+            <h2 class="text-red-700">Submit a Comment</h2>
             <form action="{% url 'comment_on_post' post_id=post.id %}" method="post">
                 {% csrf_token %}
                 <input type="test" value="" name="content">
