@@ -8,7 +8,12 @@ module.exports = {
     './user_submissions/templates/**/*.html'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        heading: ['Playfair Display', 'serif'],
+        body: ['Poppins', 'sans-serif']
+      },
+    },
   },
   plugins: [],
 }
