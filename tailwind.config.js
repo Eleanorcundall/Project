@@ -13,6 +13,12 @@ module.exports = {
         heading: ['Playfair Display', 'serif'],
         body: ['Poppins', 'sans-serif']
       },
+      colors: {
+        lightest: '#f2f2f2', // Light grey
+        light: '#ebd5d5', // Soft pink
+        coral: '#ea8a8a', // Coral
+        fourth: '#685454', // Deep brown
+      },
     },
   },
   plugins: [],
