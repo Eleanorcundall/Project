@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:css": "chokidar \"content_feeds/templates/content_feeds/*.html\" \"templates/*.html\" \"templates/account/*.html\" \"user_profile/templates/user_profile/*.html\" \"user_submissions/templates/user_submissions/*.html\" -c \"npx tailwindcss build static/src/style.css -o static/css/style.css && python manage.py collectstatic --noinput\""
+    "watch:css": "chokidar \"content_feeds/templates/content_feeds/*.html\" \"templates/*.html\" \"templates/account/*.html\" \"user_profile/templates/user_profile/*.html\" \"user_submissions/templates/user_submissions/*.html\" -c \"npx tailwindcss build static/src/style.css -o static/css/style.css && python manage.py collectstatic --noinput\"",
+    "runserver": "python manage.py runserver"
   },
   "keywords": [],
   "author": "",

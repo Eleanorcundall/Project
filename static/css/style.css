@@ -556,6 +556,14 @@ video {
   display: none;
 }
 
+h1, h2, h3, h4, h5, h6{
+  font-family: Playfair Display, serif;
+}
+
+body{
+  font-family: Poppins, sans-serif;
+}
+
 .container{
   width: 100%;
 }
@@ -606,16 +614,25 @@ video {
   margin-top: 2.5rem;
 }
 
-.mt-4{
-  margin-top: 1rem;
-}
-
 .mt-5{
   margin-top: 1.25rem;
 }
 
 .block{
   display: block;
+}
+
+.flex{
+  display: flex;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.bg-\[\#ebd5d5\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 213 213 / var(--tw-bg-opacity));
 }
 
 .text-center{
@@ -628,6 +645,11 @@ video {
 
 .font-heading{
   font-family: Playfair Display, serif;
+}
+
+.text-\[\#3e2a47\]{
+  --tw-text-opacity: 1;
+  color: rgb(62 42 71 / var(--tw-text-opacity));
 }
 
 .text-red-700{
