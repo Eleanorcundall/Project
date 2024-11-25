@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './templates/base.html',
-    './static/src/**/*.js',
+    './static/js/*.js',
     './content_feeds/templates/**/*.html',
     './user_profile/templates/**/*.html',
     './user_submissions/templates/**/*.html'
@@ -19,6 +19,10 @@ module.exports = {
         coral: '#ea8a8a', // Coral
         fourth: '#685454', // Deep brown
       },
+      rotate: {
+        '45': '45deg',
+        '-45': '-45deg',
+      }
     },
   },
   plugins: [],
