@@ -10,55 +10,51 @@
 </head>
 
 <body>
-
-    <nav class="bg-[#ebd5d5]">
-        <div class="flex justify-between text-[#3e2a47]">
-            <a class="" href="{% url 'home' %}">ItGirl</a>
-            <button class="" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class=""></span>
-            </button>
-            <div class="" id="navbarNav">
-                <ul class="flex">
-                    <li class="">
-                        <a href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="">
-                        <a class="" href="{% url 'category_posts' category='Skin' %}">Skincare</a>
-                    </li>
-                    <li class="">
-                        <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
-                    </li>
-                    <li class="">
-                        <a class="" href="{% url 'category_posts' category='Sexual Wellness' %}">Sexual
-                            Wellness</a>
-                    </li>
-                    <li class="">
-                        <a class="" href="{% url 'category_posts'  category='Menstrual Wellness' %}">Menstrual
-                            Wellness</a>
-                    </li>
-
-                </ul>
-            </div>
-            {% if user.is_authenticated %}
-            <ul class="flex">
-                <li class="">
-                    <a href="{% url 'user_submissions:submit_post' %}" class="">Create Post</a>
-
-                </li>
-                <li class="">
-                    <a href="{% url 'account_logout' %}" class="">Logout</a>
-                </li>
-                <li class="">
-                    <a href="{% url 'user_profile:user_profile' %}" class="">My Profile</a>
-                </li>
-            </ul>
-            {% else %}
+<nav class="bg-[#ebd5d5]"></nav>
+    <div class="flex justify-between items-center px-4 py-2 text-[#3e2a47]">
+        <a href="{% url 'home' %}">ItGirl</a>
+        <button id="burger-icon" aria-label="Toggle menu" class="lg:hidden">
+            <span class="block w-6 h-0.5 bg-[#3e2a47] mb-1"></span>
+            <span class="block w-6 h-0.5 bg-[#3e2a47] mb-1"></span>
+            <span class="block w-6 h-0.5 bg-[#3e2a47]"></span>
+        </button>
+        <div class="hidden lg:flex space-x-6">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'category_posts' category='Skin' %}">Skincare</a>
+            <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
+            <a href="{% url 'category_posts' category='Sexual Wellness' %}">Sexual Wellness</a>
+            <a href="{% url 'category_posts' category='Menstrual Wellness' %}">Menstrual Wellness</a>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="hidden lg:flex space-x-4">
+            <a href="{% url 'user_submissions:submit_post' %}">Create Post</a>
+            <a href="{% url 'account_logout' %}">Logout</a>
+            <a href="{% url 'user_profile:user_profile' %}">My Profile</a>
+        </div>
+        {% else %}
+        <div class="hidden lg:flex space-x-4">
             <a href="{% url 'account_login' %}">Login</a>
             <a href="{% url 'account_signup' %}">Sign Up</a>
-            {% endif %}
         </div>
-    </nav>
+        {% endif %}
+    </div>
+    <div class="lg:hidden" id="mobile-menu"
+        class="hidden lg:hidden bg-[#ebd5d5] absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center space-y-4">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'category_posts' category='Skin' %}">Skincare</a>
+        <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
+        <a href="{% url 'category_posts' category='Sexual Wellness' %}">Sexual Wellness</a>
+        <a href="{% url 'category_posts' category='Menstrual Wellness' %}">Menstrual Wellness</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'user_submissions:submit_post' %}">Create Post</a>
+        <a href="{% url 'account_logout' %}">Logout</a>
+        <a href="{% url 'user_profile:user_profile' %}">My Profile</a>
+        {% else %}
+        <a href="{% url 'account_login' %}">Login</a>
+        <a href="{% url 'account_signup' %}">Sign Up</a>
+        {% endif %}
+    </div>
+</nav>
 
     <div class="">
         {% block content %}{% endblock %}
