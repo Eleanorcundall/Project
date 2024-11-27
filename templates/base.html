@@ -11,15 +11,15 @@
 </head>
 
 <body>
-<nav class="bg-[#ebd5d5]"></nav>
+<nav class="relative bg-[#ebd5d5]"></nav>
     <div class="flex justify-between items-center px-4 py-2 text-[#3e2a47]">
         <a href="{% url 'home' %}">ItGirl</a>
-        <button id="burgerButton" aria-label="Toggle menu" class="lg:hidden">
+        <button id="burgerButton" aria-label="Toggle menu" aria-expanded="false" class="absolute top-1 right-1 z-10 lg:hidden">
             <span class="block w-6 h-1 bg-[#3e2a47] mb-1 transition-all duration-300 ease-in-out bar1"></span>
             <span class="block w-6 h-1 bg-[#3e2a47] mb-1 transition-all duration-300 ease-in-out bar2"></span>
             <span class="block w-6 h-1 bg-[#3e2a47] mb-1 transition-all duration-300 ease-in-out bar3"></span>
         </button>
-        <div class="lg:flex space-x-6 navbarNav">
+        <div class="hidden flex flex-col gap-y-[15px] lg:space-x-6">
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'category_posts' category='Skin' %}">Skincare</a>
             <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
@@ -39,8 +39,8 @@
         </div>
         {% endif %}
     </div>
-    <div class="lg:hidden" id="mobile-menu"
-        class="hidden lg:hidden bg-[#ebd5d5] absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center space-y-4">
+    <div id="mobile-menu"
+        class="hidden flex flex-col gap-y-[15px] lg:space-x-6 navbarNav hidden bg-[#ebd5d5] absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center space-y-4 burgerBarClosed">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'category_posts' category='Skin' %}">Skincare</a>
         <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>

@@ -1,21 +1,42 @@
 document.addEventListener("DOMContentLoaded", function() {
     const burgerButton = document.getElementById("burgerButton");
     const nav = document.querySelector('.navbarNav');
-    console.log(nav)
-    const bar1 = document.getElementById("bar1");
-    const bar2 = document.getElementById("bar2");
-    const bar3 = document.getElementById("bar3");
 
     burgerButton.addEventListener("click", function() {
-        // Toggle the menu
-        console.log(burgerButton)
-        console.log(nav)
-        nav.classList.toggle("hidden");
 
-        // Rotate bars into a cross
-        bar1.classList.toggle("rotate-45");
-        bar2.classList.toggle("opacity-0");
-        bar3.classList.toggle("-rotate-45");
+        // Rotate bars if the menu is closed
+        Array.from(burgerButton.children).forEach((bar, index) => {
+            if (nav.classList.contains("burgerBarClosed")) {
+                if (index === 0) {
+                    bar.classList.toggle("-rotate-45");
+                    bar.classList.toggle("origin-[75%]");
+                } else if (index === 1) {
+                    bar.classList.toggle("hidden");
+                } else if (index === 2) {
+                    bar.classList.toggle("rotate-45");
+                    bar.classList.toggle("origin-[70%]");
+                }
+            } else if (nav.classList.contains("burgerBarOpen")) {
+                if (index === 0) {
+                bar.classList.remove("-rotate-45", "origin-[75%]"); 
+                } else if (index === 1) {
+                    bar.classList.remove("hidden");
+                } else if (index === 2) {
+                    bar.classList.remove("rotate-45", "origin-[70%]");
+                }
+            }
+        });
+
+        // Toggle the menu
+        if (nav.classList.contains("burgerBarClosed")) {
+            nav.classList.remove("burgerBarClosed");
+            nav.classList.add("burgerBarOpen");
+            nav.classList.remove("hidden"); 
+        } else {
+            nav.classList.remove("burgerBarOpen");
+            nav.classList.add("burgerBarClosed");
+            nav.classList.add("hidden");
+        }
 
         // Toggle the aria-expanded attribute
         const isExpanded = burgerButton.getAttribute("aria-expanded") === "true";
