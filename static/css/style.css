@@ -626,6 +626,10 @@ body{
   margin: 1rem;
 }
 
+.m-5{
+  margin: 1.25rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -761,8 +765,13 @@ body{
   font-family: Playfair Display, serif;
 }
 
-.text-xl{
-  font-size: 1.25rem;
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
@@ -774,6 +783,18 @@ body{
 .text-red-700{
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+
+.underline{
+  text-decoration-line: underline;
+}
+
+.decoration-1{
+  text-decoration-thickness: 1px;
+}
+
+.underline-offset-4{
+  text-underline-offset: 4px;
 }
 
 .transition-all{
@@ -796,6 +817,10 @@ body{
 }
 
 @media (min-width: 1024px){
+  .lg\:m-10{
+    margin: 2.5rem;
+  }
+
   .lg\:flex{
     display: flex;
   }
