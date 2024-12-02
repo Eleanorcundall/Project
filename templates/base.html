@@ -12,7 +12,7 @@
 
 <body>
 <nav class="relative bg-lightest">
-    <div class="flex justify-between items-center px-4 py-2 text-xl text-fourth">
+    <div class="flex justify-between items-center px-4 py-2 text-lg text-fourth">
         <a href="{% url 'home' %}"> <img class="max-h-14 lg:max-h-24" src="{% static 'src/it_girl_logo.webp' %}" alt="It girl blog, est 2023"> </a>
         <button id="burgerButton" aria-label="Toggle menu" aria-expanded="false" class="absolute top-1 right-1 z-10 m-4 lg:hidden">
             <span class="block w-10 h-1 bg-fourth mb-2 transition-all duration-300 ease-in-out bar1"></span>
@@ -57,7 +57,7 @@
     </div>
 </nav>
 
-    <div class="">
+    <div class="m-5 lg:m-10">
         {% block content %}{% endblock %}
     </div>
 
