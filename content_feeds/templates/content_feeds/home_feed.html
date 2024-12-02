@@ -3,10 +3,24 @@
 {% block title %}Home - ItGirl{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the Home Page</h1>
-    {% for post in all_posts %}
-        <h2><a href="{% url 'blog_post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
-        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-        <p>{{ post.content }}</p>
-    {% endfor %}
+<div class="text-fourth">
+    <div class="text-3xl">
+        {% if user.is_authenticated %}
+            <h1>Hello, {{ request.user.username }} </h1>
+        {% else %}
+            <h1>Welcome to ItGirl Blog,
+                <a class="underline underline-offset-4 decoration-1" href="{% url 'account_login' %}">log in</a>
+                or 
+                <a class="underline underline-offset-4 decoration-1" href="{% url 'account_signup' %}">create an account for free!</a>
+            </h1>
+    </div>
+    <div>
+        {% endif %}
+        {% for post in all_posts %}
+            <h2><a href="{% url 'blog_post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+            <p>{{ post.content }}</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
