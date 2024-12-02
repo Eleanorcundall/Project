@@ -11,20 +11,20 @@
 </head>
 
 <body>
-<nav class="relative bg-[#ebd5d5]"></nav>
-    <div class="flex justify-between items-center px-4 py-2 text-[#3e2a47]">
-        <a href="{% url 'home' %}">ItGirl</a>
-        <button id="burgerButton" aria-label="Toggle menu" aria-expanded="false" class="absolute top-1 right-1 z-10 lg:hidden">
-            <span class="block w-6 h-1 bg-[#3e2a47] mb-1 transition-all duration-300 ease-in-out bar1"></span>
-            <span class="block w-6 h-1 bg-[#3e2a47] mb-1 transition-all duration-300 ease-in-out bar2"></span>
-            <span class="block w-6 h-1 bg-[#3e2a47] mb-1 transition-all duration-300 ease-in-out bar3"></span>
+<nav class="relative bg-lightest">
+    <div class="flex justify-between items-center px-4 py-2 text-xl text-fourth">
+        <a href="{% url 'home' %}"> <img class="max-h-14 lg:max-h-24" src="{% static 'src/it_girl_logo.webp' %}" alt="It girl blog, est 2023"> </a>
+        <button id="burgerButton" aria-label="Toggle menu" aria-expanded="false" class="absolute top-1 right-1 z-10 m-4 lg:hidden">
+            <span class="block w-10 h-1 bg-fourth mb-2 transition-all duration-300 ease-in-out bar1"></span>
+            <span class="block w-10 h-1 bg-fourth mb-2 transition-all duration-300 ease-in-out bar2"></span>
+            <span class="block w-10 h-1 bg-fourth mb-2 transition-all duration-300 ease-in-out bar3"></span>
         </button>
-        <div class="hidden flex flex-col gap-y-[15px] lg:space-x-6">
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'category_posts' category='Skin' %}">Skincare</a>
-            <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
-            <a href="{% url 'category_posts' category='Sexual Wellness' %}">Sexual Wellness</a>
-            <a href="{% url 'category_posts' category='Menstrual Wellness' %}">Menstrual Wellness</a>
+        <div class="hidden lg:flex lg:gap-y-[15px] lg:space-x-6">
+            <a href="{% url 'home' %}" class="hover:text-coral">Home</a>
+            <a href="{% url 'category_posts' category='Skin' %}" class="hover:text-coral">Skincare</a>
+            <a href="{% url 'category_posts' category='Hair' %}" class="hover:text-coral">Haircare</a>
+            <a href="{% url 'category_posts' category='Sexual Wellness' %}" class="hover:text-coral">Sexual Wellness</a>
+            <a href="{% url 'category_posts' category='Menstrual Wellness' %}" class="hover:text-coral">Menstrual Wellness</a>
         </div>
         {% if user.is_authenticated %}
         <div class="hidden lg:flex space-x-4">
@@ -40,7 +40,7 @@
         {% endif %}
     </div>
     <div id="mobile-menu"
-        class="hidden flex flex-col gap-y-[15px] lg:space-x-6 navbarNav hidden bg-[#ebd5d5] absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center space-y-4 burgerBarClosed">
+        class="hidden flex flex-col gap-y-[15px] lg:space-x-6 navbarNav hidden bg-lightest w-full h-full flex flex-col items-center justify-center space-y-4 py-9 text-fourth burgerBarClosed">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'category_posts' category='Skin' %}">Skincare</a>
         <a href="{% url 'category_posts' category='Hair' %}">Haircare</a>
